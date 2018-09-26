@@ -1,0 +1,33 @@
+<div class="container">
+    <form>
+        <input class="form-control" type="text" name="card_name" placeholder="Card Name" />
+        <button class="btn btn-submit" type="submit">Submit</button>
+    </form>
+
+    {% if card_error %}
+        <div class="alert  alert-danger">
+            There was an error getting card data: <pre>{{ card_error }}</pre>
+        </div>
+    {% endif %}
+
+    {% if rarity_data %}
+        <table class="table">
+            <thead>
+                <tr>
+                    {% for header in rarity_data[0] %}
+                        <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rarity_data[1:] %}
+                    <tr>
+                        {% for col in row %}
+                            <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
